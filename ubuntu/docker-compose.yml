@@ -1,0 +1,42 @@
+x-ubuntu-config: &ubuntu-config
+  image: ubuntu:latest
+  tty: true
+  networks:
+    ubuntu-network:
+
+services:
+  ubuntu-container1:
+    <<: *ubuntu-config
+    container_name: ubuntu-container1
+    networks:
+      ubuntu-network:
+        ipv4_address: 172.25.0.2
+
+  ubuntu-container2:
+    <<: *ubuntu-config
+    container_name: ubuntu-container2
+    networks:
+      ubuntu-network:
+        ipv4_address: 172.25.0.3
+
+  ubuntu-container3:
+    <<: *ubuntu-config
+    container_name: ubuntu-container3
+    networks:
+      ubuntu-network:
+        ipv4_address: 172.25.0.4
+
+  ubuntu-container4:
+    <<: *ubuntu-config
+    container_name: ubuntu-container4
+    networks:
+      ubuntu-network:
+        ipv4_address: 172.25.0.5
+
+networks:
+  ubuntu-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+
