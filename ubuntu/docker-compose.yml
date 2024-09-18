@@ -1,42 +1,39 @@
-x-ubuntu-config: &ubuntu-config
-  image: ubuntu:latest
-  tty: true
-  networks:
-    ubuntu-network:
-
+version: '3'
 services:
-  ubuntu-container1:
-    <<: *ubuntu-config
-    container_name: ubuntu-container1
+  ubuntu1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ubuntu1
+    tty: true
     networks:
-      ubuntu-network:
-        ipv4_address: 172.25.0.2
-
-  ubuntu-container2:
-    <<: *ubuntu-config
-    container_name: ubuntu-container2
+      - mynetwork
+  ubuntu2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ubuntu2
+    tty: true
     networks:
-      ubuntu-network:
-        ipv4_address: 172.25.0.3
-
-  ubuntu-container3:
-    <<: *ubuntu-config
-    container_name: ubuntu-container3
+      - mynetwork
+  ubuntu3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ubuntu3
+    tty: true
     networks:
-      ubuntu-network:
-        ipv4_address: 172.25.0.4
-
-  ubuntu-container4:
-    <<: *ubuntu-config
-    container_name: ubuntu-container4
+      - mynetwork
+  ubuntu4:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ubuntu4
+    tty: true
     networks:
-      ubuntu-network:
-        ipv4_address: 172.25.0.5
+      - mynetwork
 
 networks:
-  ubuntu-network:
+  mynetwork:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 172.25.0.0/16
 
