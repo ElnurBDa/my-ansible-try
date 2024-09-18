@@ -1,0 +1,10 @@
+---
+- name: Create user "Elnur" on all hosts
+  hosts: all
+  become: yes
+  become_user: root
+  tasks:
+    - name: Ensure user "elnur" is present
+      ansible.builtin.user:
+        name: elnur
+
