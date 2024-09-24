@@ -8,9 +8,11 @@ I learn ansible, that is why.
 ---
 
 # Install Ansible
+```
 python3 -m venv .venv 
 .venv/bin/activate
 pip3 install ansible
+```
 
 # Preparation of Environment (Docker)
 ```bash
