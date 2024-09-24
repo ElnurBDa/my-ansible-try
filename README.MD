@@ -1,21 +1,32 @@
+# Why
+I learn ansible, that is why.
+
+## Sources:
+- Documentation
+- Ansible: Up and Running, 3rd Edition
+
+---
+
 # Install Ansible
 python3 -m venv .venv 
 .venv/bin/activate
 pip3 install ansible
 
-# Preparation of Environment
+# Preparation of Environment (Docker)
 ```bash
 cd ubuntu
 docker compose build
 docker compose up -d
 
 ssh-keygen -t rsa -b 2048
-# Specify Path: ssh/idrsa
-
-ssh-copy-id -i ssh/id_rsa ansible@172.19.0.2
-ssh-copy-id -i ssh/id_rsa ansible@172.19.0.3
-ssh-copy-id -i ssh/id_rsa ansible@172.19.0.4
-ssh-copy-id -i ssh/id_rsa ansible@172.19.0.5
-
-# Or transfer id_rsa to ~/.ssh/ and go without -i
+ssh-copy-id ansible@172.19.0.X
+# and do the copy for each one
 ```
+
+# Preparation of Environment (Vagrant)
+```bash
+vagrant init ubuntu/focal64
+vagrant up
+vagrant ssh-config
+```
+
